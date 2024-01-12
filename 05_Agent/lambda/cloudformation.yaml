@@ -1,0 +1,110 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  IGDBClientID:
+      Type: String
+      Description: ClientID provided by IGDB for invoking the developer API.
+  IGDBAccessToken:
+      Type: String
+      Description: Access Token associated with the IGDB client ID for invoking the developer API.
+  S3BucketName:
+      Type: String
+      Description: S3 Bucket name where the lambda function zip is located.
+  S3Key:
+      Type: String
+      Description: S3 Object Key where the lambda function zip is located.
+
+Resources:
+  BedrockAgentActionGroup1Function:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: BedrockAgentActionGroup1Test
+      Handler: lambda_function.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Timeout: 60
+      Code:
+        S3Bucket: !Ref S3BucketName
+        S3Key: !Ref S3Key
+      Runtime: python3.11
+      Environment:
+        Variables: 
+           IGDB_CLIENT_ID: !Ref IGDBClientID
+           IGDB_ACCESS_TOKEN: !Ref IGDBAccessToken
+
+  LambdaInvokePermission:
+    Type: 'AWS::Lambda::Permission'
+    Properties:
+      FunctionName: !GetAtt BedrockAgentActionGroup1Function.Arn
+      Action: 'lambda:InvokeFunction'
+      Principal: bedrock.amazonaws.com
+      SourceAccount: !Ref 'AWS::AccountId'
+      SourceArn: !Sub 'arn:aws:bedrock:${AWS::Region}:${AWS::AccountId}:agent/*'
+
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+            - lambda.amazonaws.com
+          Action:
+          - sts:AssumeRole
+      Path: "/"
+      Policies:
+        - PolicyName:
+            !Sub
+              - 'CloudWatchLogPolicy-${stackId}'
+              - stackId: !Select [2, !Split ['/', !Ref AWS::StackId]]
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+            - Effect: Allow
+              Action:
+              - logs:CreateLogGroup
+              Resource: !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:*'
+            - Effect: Allow
+              Action:
+              - logs:CreateLogStream
+              - logs:PutLogEvents
+              Resource: !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/BedrockAgentActionGroup1Test:*'
+
+  BedrockPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          Effect: Allow
+          Action: bedrock:*
+          Resource: '*'
+
+  AmazonBedrockExecutionRoleForAgents:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service: bedrock.amazonaws.com
+          Action: sts:AssumeRole
+      Path: /
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonS3FullAccess
+        - arn:aws:iam::aws:policy/AWSLambda_FullAccess
+        - !Ref BedrockPolicy
+      RoleName: !Sub
+        - 'AmazonBedrockExecutionRoleForAgents_${stackId}'
+        - stackId: !Select [4, !Split ['-', !Select [2, !Split ['/', !Ref AWS::StackId] ] ] ]
+Outputs:
+  LambdaFunctionName:
+    Description: Name of the Lambda Function
+    Value: !Ref BedrockAgentActionGroup1Function
+  LambdaExecutionRole:
+    Description: The Lambda Execution Role created for the function
+    Value: !Ref LambdaExecutionRole
+  BedrockExecutionRoleForAgents:
+    Description: The Execution Role created for Bedrock Agent
+    Value: !Ref AmazonBedrockExecutionRoleForAgents
+    

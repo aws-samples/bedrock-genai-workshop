@@ -1,0 +1,9 @@
+package/
+*.zip
+.vscode/
+.streamlit/
+.ipynb_checkpoints/
+extract_game_data.ipynb
+*.csv
+__pycache__/
+*.tar.gz

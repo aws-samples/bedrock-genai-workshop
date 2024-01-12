@@ -1,0 +1,145 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "IGDBGameTaxonomy",
+    "version" : "2023-12-14 01:36:20UTC"
+  },
+  "paths" : {
+    "/genres" : {
+      "description": "Retrieves all game genres",
+      "get" : {
+        "description": "Get all game genres",
+        "responses" : {
+          "200": {
+            "description": "Gets the genre details",
+            "content": {
+                "application/json": {
+                    "schema": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                                "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "description": "Unique ID of the genre."
+                                    },
+                                    "name": {
+                                      "type": "string",
+                                      "description": "The name of the genre"
+                                    }
+                                 }
+                              }
+                      }
+                  }
+              }
+            }
+        } 
+      }
+    },
+    "/games" : {
+      "description": "Retrieves relevant game information based on genre and release year",
+      "get" : {
+        "description": "Retrieves relevant game information based on genre and release year",
+        "parameters" : [ {
+          "name" : "genreId",
+          "in" : "query",
+          "description" : "The id of that indentifies the genre of the game",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        },
+        {
+          "name" : "releaseYear",
+          "in" : "query",
+          "description" : "The year when the game was released",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200": {
+            "description": "Gets the genre details",
+            "content": {
+                "application/json": {
+                    "schema": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                                "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "description": "Unique ID of the game."
+                                    },
+                                    "name": {
+                                      "type": "string",
+                                      "description": "The title of the game"
+                                    },
+                                    "user_rating": {
+                                      "type": "integer",
+                                      "description": "The average user rating of the game"
+                                    }
+                                 }
+                              }
+                      }
+                  }
+              }
+            }
+        } 
+      }
+    },
+    "/game-media" : {
+      "description": "Retrieves an image or video associated with the given game ID and media type",
+      "get" : {
+        "description": "Retrieves an image or video associated with the game",
+        "parameters" : [ {
+            "name" : "gameId",
+            "in" : "path",
+            "description" : "The id of that indentifies the game",
+            "required" : true,
+            "schema" : {
+              "type" : "integer"
+            }
+          },
+          {
+            "name" : "mediaType",
+            "in" : "path",
+            "description" : "The type of media to retrieve. Only image or videos are supported",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        ],
+        "responses" : {
+          "200": {
+            "description": "Returns the image or video media URL associated with the game",
+            "content": {
+                "application/json": {
+                    "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "description": "Unique ID of the game image."
+                                },
+                                "mediaType" : {
+                                  "type" : "string",
+                                  "description" : "The type of game media. Valid values are image or video"
+                                },
+                                "url": {
+                                  "type": "string",
+                                  "description": "The image or video URL of the game"
+                                }
+                            }
+                            
+                      }
+                  }
+              }
+            }
+        } 
+      }
+    }
+  }
+}
