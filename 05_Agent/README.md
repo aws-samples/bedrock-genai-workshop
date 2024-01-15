@@ -37,7 +37,7 @@ Note: Depending on how the lab is delivered, this step could already been done b
 3. in the same folder, run the cloudformation stack to create the lambda function: (replacing the client_id and access tokens with the values to be provided by your instructor.
 
     ```
-    aws cloudformation create-stack --stack-name bedrock-genai-workshop-stack --template-body file://${PWD}/cloudformation.yaml --parameters ParameterKey=IGDBClientID,ParameterValue=[val] ParameterKey=IGDBAccessToken,ParameterValue=[val] ParameterKey=S3BucketName,ParameterValue=sagemaker-us-east-1-123456789012 ParameterKey=S3Key,ParameterValue=bedrock/agent/action_group1-test/bedrock_agent_action_group1_lambda_package.zip --capabilities CAPABILITY_NAMED_IAM
+    aws cloudformation create-stack --stack-name bedrock-genai-workshop-stack --template-body file://${PWD}/cloudformation.yaml --parameters ParameterKey=IGDBClientID,ParameterValue=[val] ParameterKey=IGDBAccessToken,ParameterValue=[val] ParameterKey=S3BucketName,ParameterValue=[S3 bucket name] ParameterKey=S3Key,ParameterValue=bedrock/agent/action_group1/bedrock_agent_action_group1_lambda_package.zip --capabilities CAPABILITY_NAMED_IAM
     ```
 4. Verify that the lambda function is created successfully:
 
