@@ -45,10 +45,11 @@ Note: Depending on how the lab is delivered, this step could already been done b
     aws cloudformation describe-stacks --stack-name bedrock-genai-workshop-stack
     ```
 
-5. cd agent and upload the open-api.json file to S3:
+5. upload the open-api.json file to S3:
 
 ``` 
-aws s3 cp open-api.json [e.g. s3://sagemaker-us-east-1-123456789012/bedrock/agent/action_group1/open-api.json]
+cd agent
+aws s3 cp open-api.json s3://[your S3 bucket name]/bedrock/agent/action_group1/open-api.json]
 ```
 
 6. Make a note of the following outputs from the steps above. You’ll need to reference them in the subsequent steps:
