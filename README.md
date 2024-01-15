@@ -103,7 +103,7 @@ Given most of the lab contents are developed in juypter notebooks, we'll be usin
 Once your notebook environment is set up, clone this workshop repository into it.
 
 ```sh
-sudo apt update && sudo apt install -y unzip
+sudo apt update && sudo apt install -y unzip zip
 git clone https://github.com/aws-samples/bedrock-genai-workshop.git
 cd bedrock-genai-workshop
 ```
