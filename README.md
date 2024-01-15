@@ -108,8 +108,6 @@ git clone https://github.com/aws-samples/bedrock-genai-workshop.git
 cd bedrock-genai-workshop
 ```
 
-You're now ready to explore the lab notebooks! Start with [00_Intro/bedrock_boto3_setup.ipynb](00_Intro/bedrock_boto3_setup.ipynb) for details on how to install the Bedrock SDKs, create a client, and start calling the APIs from Python.
-
 ## Content
 
 This repository contains notebook examples for the Bedrock Architecture Patterns workshop. The notebooks are organised by module as follows:
