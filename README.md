@@ -39,31 +39,26 @@ To grant Bedrock and other permissions relevant for this workshop to your identi
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "BedrockFullAccess",
             "Effect": "Allow",
             "Action": ["bedrock:*"],
             "Resource": "*"
         },
         {
-            "Sid": "BedrockFullAccess",
             "Effect": "Allow",
             "Action": ["iam:*"],
             "Resource": "*"
         },
         {
-            "Sid": "BedrockFullAccess",
             "Effect": "Allow",
             "Action": ["cloudformation:*"],
             "Resource": "*"
         },
         {
-            "Sid": "BedrockFullAccess",
             "Effect": "Allow",
             "Action": ["aoss:*"],
             "Resource": "*"
         },
         {
-            "Sid": "BedrockFullAccess",
             "Effect": "Allow",
             "Action": ["lambda:*"],
             "Resource": "*"
