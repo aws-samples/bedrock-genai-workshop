@@ -280,7 +280,6 @@ External URL: http://52.4.240.77:8501
 
 4. That’s it! You have successfully deployed a working chatbot with Bedrock Agent integration. Here’re a few questions you can start asking as examples:
 
-    * Show me all the genres
     * Show me some Shooting games that were released in 2020 
     * What's the rating for "Call of Duty: Black Ops"? 
     * Show me some Fighting games released in 2010, I want it sorted by ratings in descending order. 
