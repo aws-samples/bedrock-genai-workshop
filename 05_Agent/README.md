@@ -68,7 +68,7 @@ aws s3 cp open-api.json s3://[your S3 bucket name]/bedrock/agent/action_group1/o
 
 3. Provide the following details to create an Agent:
 
-    **Agent Name**: <unique-id>-bedrock-agent-workshop\
+    **Agent Name**: [ a unique id ]-bedrock-agent-workshop\
     **Agent Description**: An LLM Agent for helping users in a typical gaming use case.\
     **User Input**: Yes\
     **IAM Permissions**: Select the IAM Execution Role created in the cloudformation template above.
