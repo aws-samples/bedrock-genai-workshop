@@ -53,8 +53,9 @@ aws s3 cp open-api.json s3://[your S3 bucket name]/bedrock/agent/action_group1/o
 ```
 
 6. Make a note of the following outputs from the steps above. You’ll need to reference them in the subsequent steps:
-    a. IAM Role in the CloudFormation template (i.e. should start with AmazonBedrockExecutionRoleForAgents_)
-    b. Lambda Function created in the Cloudformation template: (i.e. BedrockAgentActionGroup1)
+
+    a. IAM Role in the CloudFormation template (i.e. should start with AmazonBedrockExecutionRoleForAgents_) \
+    b. Lambda Function created in the Cloudformation template: (i.e. BedrockAgentActionGroup1)\
     c. S3 location path for the open-api.json 
 
 ## Instructions
