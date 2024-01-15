@@ -63,7 +63,7 @@ def show_message(response):
     image_match = has_matching_image_url(response)
     if image_match:
         image_url = f"https:{image_match.group(1)}" 
-        st.image(image_url, width=400)
+        st.image(image_url, width=200)
     else:
         video_match = has_matching_video(response)
         if video_match:

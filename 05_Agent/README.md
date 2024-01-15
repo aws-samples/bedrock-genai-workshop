@@ -89,7 +89,7 @@ Leave the rest of the details as default, then click **Next**.
     a. Action Group Name: action-group-1\
     b. Description: Action Group that performs actions based on user query\
     c. Select Lambda function: [the lambda function created in the Cloudformation template e.g. BedrockAgentActionGroup1]\
-    d. Select API Schema: The S3 URL where the open-api.json was uploaded.\
+    d. Select API Schema: The S3 URL where the open-api.json was uploaded.
 
 <img src="imgs/provide-agent-detail-action-group.png" alt="agent-detail-action-group" style="width: 600px;"/>
 
@@ -186,7 +186,7 @@ Click **Confirm** in the pop up window to override the default Orchestration pro
 
 <img src="imgs/agent-working-test-custom-orchestration-prep.png" alt="agent-working-test-custom-orchestration-prep" style="width: 250px;"/>
 
-8. Let’s try with the same question again: show me all game genres The output should now contain more human readable format, as shown in the following:
+8. Let’s try with the same question again: **show me all game genres**. The output should now contain more human readable format, as shown in the following:
 
 <img src="imgs/test-window-custom-prompt-output.png" alt="test-window-custom-prompt-output" style="width: 250px;"/>
 
@@ -217,7 +217,7 @@ In addition to action groups, you could also integrate Knowledge Base with Bedro
 
 <img src="imgs/agent-working-test-custom-orchestration-prep.png" alt="agent-working-test-custom-orchestration-prep" style="width: 250px;"/>
 
-5. In the test window, enter a question: show me a game summary for "LEGO Marvel Super Heroes 2". Response is shown as followed:
+5. In the test window, enter a question: **show me a game summary for "LEGO Marvel Super Heroes 2"**. Response is shown as followed:
 
 <img src="imgs/agent-kb-test-window-qa.png" alt="agent-kb-test-window-qa" style="width: 300px;"/>
 
@@ -285,8 +285,8 @@ External URL: http://52.4.240.77:8501
     * What's the rating for "Call of Duty: Black Ops"? 
     * Show me some Fighting games released in 2010, I want it sorted by ratings in descending order. 
     * Show me some games in Shooting genre 
-    * Show me an image of “Marvel Super Heroes vs. Street Fighter"
-    * Show me the video for “Marvel Super Heroes vs. Street Fighter"
+    * Show me an image of "Marvel Super Heroes vs. Street Fighter"
+    * Show me the video for "Marvel Super Heroes vs. Street Fighter"
     * What's the game id for "LEGO Marvel Super Heroes 2"?
     * Can you show me some similar games of "LEGO Marvel Super Heroes 2"?
 
